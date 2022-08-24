@@ -1,0 +1,31 @@
+SHOW INDEX FROM Categorias;
+
+EXPLAIN SELECT * FROM Categorias;
+
+EXPLAIN SELECT Descricao
+FROM Categorias
+WHERE Descricao = "Cheeses";
+
+
+-- ERROR - NAO PODE USAR TEXT 
+CREATE INDEX Descricao_idx ON categorias(Descricao);
+
+EXPLAIN SELECT Contato
+FROM clientes
+WHERE Contato = "Yang Wang";
+
+SHOW INDEX FROM produtos;
+
+DROP INDEX `Produtos_ProdutoNome` ON produtos;
+
+EXPLAIN SELECT produtos.ProdutoNome, detalhefatura.ProdutoID, detalhefatura.PrecoUnitario, detalhefatura.Quantidade
+FROM produtos
+INNER JOIN detalhefatura
+ON produtos.ProdutoID = detalhefatura.ProdutoID;
+
+ CREATE INDEX Produtos_ProdutoNome ON produtos(ProdutoNome);
+ 
+ SELECT ProdutoNome
+ FROM produtos
+ WHERE ProdutoNome LIKE "%spread%";
+ 
