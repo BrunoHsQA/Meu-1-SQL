@@ -1,0 +1,25 @@
+-- Bruno Henrique
+-- Jefferson Mendes
+-- Adriano Augusto
+-- Luanderson Silva
+-- Werllon Lima
+
+SELECT artistas.nome, albuns.id
+FROM artistas
+INNER JOIN albuns
+ON artistas.id = albuns.id
+order by artistas.id;
+
+
+SELECT Clientes.nome, SUM(faturas.valor_total),
+count(faturas.id_cliente)
+FROM clientes
+INNER JOIN faturas
+ON Clientes.id = faturas.id_Cliente
+GROUP BY Clientes.id
+HAVING sum(faturas.valor_total) > 5;
+
+SELECT cancoes.nome, tipos_de_arquivo.id
+from cancoes
+inner join tipos_de_arquivo
+on cancoes.id = tipos_de_arquivo.id
