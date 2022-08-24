@@ -1,0 +1,208 @@
+CREATE SCHEMA RPGame;
+USE RPGame;
+
+
+CREATE TABLE usuario (
+usuario_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+
+
+senha_usuario VARCHAR(8),
+
+Email_usuario VARCHAR (14),
+
+Pais_usuario VARCHAR (2)
+);
+
+CREATE TABLE mundo(
+mundo_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+
+mundo_atual CHAR (10),
+
+progresso_historia TINYINT,
+
+missoes_concluidas TINYINT
+);
+
+CREATE TABLE classe(
+
+classe_personagem_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+arqueiro BOOL,
+guerreiro BOOL,
+mago BOOL,
+assassino BOOL,
+cavaleiro BOOL,
+curandeiro BOOL
+
+
+);
+
+CREATE TABLE mascote(
+mascote_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+lobo BOOL,
+cachorro BOOL,
+tigre BOOL,
+Falcao BOOL,
+cavalo BOOL,
+Grifo BOOL
+
+);
+
+CREATE TABLE personagem(
+Personagem_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+
+nome_perspnagem VARCHAR(15),
+
+mundo_id INT,
+
+nivel_personagem TINYINT,
+
+classe_personagem_id INT,
+
+arma_primaria CHAR (10),
+
+arma_secundaria CHAR (10),
+
+mascote BOOL,
+
+mascote_id INT,
+
+inimigos_mortos BIGINT,
+
+armadura_completa VARCHAR (20),
+
+quant_ouro INT,
+
+quant_mana SMALLINT,
+
+usuario_id INT,
+
+bitcoin_loko VARCHAR (567),
+
+ FOREIGN KEY (mundo_id)
+        REFERENCES mundo (mundo_id),
+        
+FOREIGN KEY (classe_personagem_id)
+        REFERENCES classe (classe_personagem_id),
+
+FOREIGN KEY (mascote_id)
+        REFERENCES mascote (mascote_id),
+        
+FOREIGN KEY (usuario_id)
+        REFERENCES usuario (usuario_id)
+
+
+);
+
+CREATE TABLE arqueiro (
+arqueiro_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+Arco VARCHAR(15),
+Flechas VARCHAR(15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+arqueiro INT,
+
+FOREIGN KEY (arqueiro)
+        REFERENCES classe (classe_personagem_id)
+
+);
+
+CREATE TABLE guerreiro(
+guerreiro_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+guerreiro BOOL,
+espada VARCHAR(15),
+Escudo VaRCHAR(15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+guerreiro INT,
+
+FOREIGN KEY (guerreiro)
+        REFERENCES classe (classe_personagem_id)
+
+
+
+);
+
+CREATE TABLE cavaleiro (
+cavaleiro_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+espada VARCHAR(15),
+Escudo VaRCHAR(15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+cavaleiro INT,
+
+FOREIGN KEY (cavaleiro)
+        REFERENCES classe (classe_personagem_id)
+
+
+
+
+);
+
+CREATE TABLE mago(
+mago_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+cajado VARCHAR(15),
+magias VaRCHAR(15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+mago INT,
+
+
+FOREIGN KEY (mago)
+        REFERENCES classe (classe_personagem_id)
+
+
+
+);
+
+CREATE TABLE assassino (
+assassino_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+facas VARCHAR(15),
+senbon VaRCHAR(15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+assassnio INT,
+
+
+FOREIGN KEY (assassino)
+        REFERENCES classe(classe_personagem_id)
+
+
+
+
+);
+
+CREATE TABLE curandeiro(
+curandeiro_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+cajado VARCHAR(15),
+pocoes VARCHAR (15),
+peitoral VARCHAR (15),
+Calca VARCHAR  (15),
+Calcado VARCHAR (15),
+curandeiro INT,
+
+FOREIGN KEY (curandeiro)
+        REFERENCES classe(classe_personagem_id)
+
+
+);
+
+INSERT INTO usuario (nome_usuario)
+VALUES("khataros");
+
+
+
+SELECT "mundo_atual"
+FROM mundo;
+
+UPDATE mascote SET lobo ="Wolf"
+WHERE lobo = "";
+
+DELETE FROM personagem WHERE bitcoin_loko;
+
+
+
